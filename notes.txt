@@ -1,0 +1,24 @@
+Si no está instalado soporte para mysql en python:
+sudo apt-get install python3-dev default-libmysqlclient-dev build-essential
+
+*Create DB y USER:
+CREATE DATABASE trivia;  
+CREATE USER 'trivia'@'localhost' IDENTIFIED BY 'trivia'; 
+GRANT ALL PRIVILEGES ON trivia.* TO 'trivia'@'localhost';
+
+*Instal redis
+wget http://download.redis.io/releases/redis-6.0.8.tar.gz 
+tar xzf redis-6.0.8.tar.gz 
+cd redis-6.0.8/
+make 
+make test 
+src/redis-server  
+** stop with CTRL C
+
+python3 -m venv env
+source env/bin/activate
+pip install django
+pip install -U channels
+pip install channels_redis
+pip install mysqlclient
+pip install python-dateutil

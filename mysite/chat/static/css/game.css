@@ -1,0 +1,128 @@
+[type='radio'] {
+display: none;
+}
+
+body, button, input, select, textarea {
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    color: #4a4a4a;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.next-link {
+    color:white
+}
+.buttonQuestions {
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;   
+    border-radius: 25px;
+    transition-duration: 0.4s;
+  }
+  
+.questionBtn {
+    width: 250px;
+    background: rgba(255, 255, 255, 0); 
+    color: white; 
+    border: 4px solid white;
+    font-size: 20px;
+}
+
+.questionBtn:hover {
+    font-weight: 700;
+    color: #E34AC5;
+  }
+
+.buttonLink {
+    border: none;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 2px 2px;
+    cursor: pointer;   
+    border-radius: 50px;
+    transition-duration: 0.4s;
+  }
+
+.linkBtn {
+    width: 150px;
+    background: rgba(255, 255, 255, 0); 
+    color: white; 
+    border: 1.5px solid white;
+    font-size: 20px;
+}
+
+.linkBtn:hover {
+    background: white;
+    color: black;
+}
+
+.buttonLink a:link, a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.buttonLink a:hover, a:active {
+    color:black;
+    text-decoration: none;
+}
+
+.menuBtn {
+    width: 200px;
+    background: rgba(255, 255, 255, 0); 
+    color: white; 
+    border: 1.5px solid white;
+    font-size: 20px;
+}
+
+.menuBtn:hover {
+    background: white;
+    color: black;
+}
+
+.question {
+    color: white;
+    font-size: 30px;
+}
+
+.hero.is-fullheight {
+    min-height: 100vh;
+}
+
+.hero.is-dark {
+    background-color: #003342;
+    color: #fff;
+}
+
+.has-background-primary-gradient {
+    background: #001c28;
+    background: linear-gradient(277deg, #001c28 0%, #005d77 100%) !important;
+}
+
+.radius-bottom {
+    border-bottom-right-radius: 16vh;
+    border-bottom-left-radius: 16vh;
+    overflow: hidden !important;
+}
+
+.hero {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.game-modal {
+    display: none;
+}

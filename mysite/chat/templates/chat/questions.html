@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pregunta</title>
+    <link href="{% static 'css/game.css' %}" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body onload="processMessage()">
+    <div class="container" style="margin-top:30px">
+        <div class="hero is-fullheight is-dark radius-bottom has-background-primary-gradient">
+            <div class="m-2">
+                <img src="{% static 'chat/iso-triangle-white.svg' %}?id=1cb39a9af6741f0793b3" width="50">
+                <span id="user-txt" class="h3"></span>
+            </div>
+            <div id="game-container">
+                <div class="row mb-5">
+                    <div class="col-12 text-center">
+                        <div class="question">¿{{ question_data.question }}?</div>
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="col-md-6 col-sm-12 text-center">
+                        <button class="buttonQuestions questionBtn">
+                            <input type="radio" id="option1" name="option-input" value="{{ question_data.option1 }}">
+                            {{ question_data.option1 }}
+                        </button>
+                    </div>
+                    <div class="col-md-6 col-sm-12 text-center">
+                        <button class="buttonQuestions questionBtn">
+                            <input type="radio" id="option2" name="option-input" value="{{ question_data.option2 }}">
+                            {{ question_data.option2 }}
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 text-center">
+                        <button class="buttonQuestions questionBtn">
+                            <input type="radio" id="option3" name="option-input" value="{{ question_data.option3 }}">
+                            {{ question_data.option3 }}
+                        </button>
+                    </div>
+                    <div class="col-md-6 col-sm-12 text-center">
+                        <button class="buttonQuestions questionBtn">
+                            <input type="radio" id="option4" name="option-input" value="{{ question_data.option4 }}">
+                            {{ question_data.option4 }}
+                        </button>
+                    </div>
+                </div>
+                {{ room_name|json_script:"room-name" }}
+
+                {% if last_question == 1 %}
+                {% url 'end' as next_url %}
+                {% else %}
+                {% url 'question' room_question=next_room as next_url %}
+                {% endif %}
+                <a href="{{ next_url }}" class="next_link">Next</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="game-modal">
+        <div class="row">
+            <div class="col-12 text-center question mb-5 mt-5" id="modal-log">
+                log text
+            </div>
+            <div class="row">
+            </div>
+            <div class="col-12 text-center mb-5 mt-5">
+                <div class="buttonLink linkBtn">
+                    <a href="{{ next_url }}">
+                        Continuar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/game.js' %}"></script>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
