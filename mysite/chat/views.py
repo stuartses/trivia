@@ -1,7 +1,7 @@
 # chat/views.py
 from django.shortcuts import render
 from django.http import HttpResponse
-from chat import questions
+from chat import questions, players
 from .models import Players, Games
 import json
 
@@ -55,11 +55,14 @@ def question(request, room_question):
         next_room = "end"
         last_question = 1
 
+    current_users = players.get_current_users()
+
     context = {
         'room_name': room_question,
         'question_data': questions_list,
         'next_room': next_room,
-        'last_question': last_question
+        'last_question': last_question,
+        'instances': current_users
     }
 
     return render(request, 'chat/questions.html', context)

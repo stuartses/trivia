@@ -19,47 +19,66 @@
                 <span id="user-txt" class="h3"></span>
             </div>
             <div id="game-container">
-                <div class="row mb-5">
-                    <div class="col-12 text-center">
-                        <div class="question">¿{{ question_data.question }}?</div>
-                    </div>
-                </div>
-                <div class="row mb-5">
-                    <div class="col-md-6 col-sm-12 text-center">
-                        <button class="buttonQuestions questionBtn">
-                            <input type="radio" id="option1" name="option-input" value="{{ question_data.option1 }}">
-                            {{ question_data.option1 }}
-                        </button>
-                    </div>
-                    <div class="col-md-6 col-sm-12 text-center">
-                        <button class="buttonQuestions questionBtn">
-                            <input type="radio" id="option2" name="option-input" value="{{ question_data.option2 }}">
-                            {{ question_data.option2 }}
-                        </button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 col-sm-12 text-center">
-                        <button class="buttonQuestions questionBtn">
-                            <input type="radio" id="option3" name="option-input" value="{{ question_data.option3 }}">
-                            {{ question_data.option3 }}
-                        </button>
-                    </div>
-                    <div class="col-md-6 col-sm-12 text-center">
-                        <button class="buttonQuestions questionBtn">
-                            <input type="radio" id="option4" name="option-input" value="{{ question_data.option4 }}">
-                            {{ question_data.option4 }}
-                        </button>
-                    </div>
-                </div>
-                {{ room_name|json_script:"room-name" }}
+                <div class="row mb-5 ml-3">
+                    <div class="col-lg-9 col-md-12">
 
-                {% if last_question == 1 %}
-                {% url 'end' user_name='omm' as next_url %}
-                {% else %}
-                {% url 'question' room_question=next_room as next_url %}
-                {% endif %}
-                <a href="{{ next_url }}" class="next_link">Next</a>
+                        <div class="row mb-5">
+                            <div class="col-12 text-center">
+                                <div class="question">¿{{ question_data.question }}?</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 text-center">
+                                <button class="buttonQuestions questionBtn">
+                                    <input type="radio" id="option1" name="option-input"
+                                        value="{{ question_data.option1 }}">
+                                    {{ question_data.option1 }}
+                                </button>
+                            </div>
+                            <div class="col-md-6 col-sm-12 text-center">
+                                <button class="buttonQuestions questionBtn">
+                                    <input type="radio" id="option2" name="option-input"
+                                        value="{{ question_data.option2 }}">
+                                    {{ question_data.option2 }}
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 text-center">
+                                <button class="buttonQuestions questionBtn">
+                                    <input type="radio" id="option3" name="option-input"
+                                        value="{{ question_data.option3 }}">
+                                    {{ question_data.option3 }}
+                                </button>
+                            </div>
+                            <div class="col-md-6 col-sm-12 text-center">
+                                <button class="buttonQuestions questionBtn">
+                                    <input type="radio" id="option4" name="option-input"
+                                        value="{{ question_data.option4 }}">
+                                    {{ question_data.option4 }}
+                                </button>
+                            </div>
+                        </div>
+                        {{ room_name|json_script:"room-name" }}
+
+                        {% if last_question == 1 %}
+                        {% url 'end' user_name='omm' as next_url %}
+                        {% else %}
+                        {% url 'question' room_question=next_room as next_url %}
+                        {% endif %}
+                    </div>
+
+                    <div class="col-lg-3 col-md-12 mt-5">
+                        <b>Jugadores</b>
+                        <ul>
+                            {% for instance in instances %}
+                            <li>{{ instance }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+
+                </div>
             </div>
         </div>
     </div>
