@@ -65,7 +65,7 @@ def question(request, room_question):
     return render(request, 'chat/questions.html', context)
 
 
-def end(request):
+def end(request, user_name):
     all_games = Games.objects.all()
     users = {}
 

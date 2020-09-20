@@ -55,7 +55,7 @@
                 {{ room_name|json_script:"room-name" }}
 
                 {% if last_question == 1 %}
-                {% url 'end' as next_url %}
+                {% url 'end' user_name='omm' as next_url %}
                 {% else %}
                 {% url 'question' room_question=next_room as next_url %}
                 {% endif %}
@@ -72,7 +72,7 @@
             <div class="row">
             </div>
             <div class="col-12 text-center mb-5 mt-5">
-                <div class="buttonLink linkBtn">
+                <div class="buttonLink linkBtn" id="next_stage">
                     <a href="{{ next_url }}">
                         Continuar
                     </a>
@@ -82,7 +82,15 @@
     </div>
 
     <script src="{% static 'js/game.js' %}"></script>
-
+    {% if last_question == 1 %}
+    <script>
+        const session_user = sessionStorage.trivia_user;
+        let init_url = document.querySelector('#next_stage a').href;
+        let end_url = init_url.replace("omm", session_user);
+        document.querySelector('#next_stage a').href = end_url;
+        console.log(end_url);
+    </script>
+    {% endif %}
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 

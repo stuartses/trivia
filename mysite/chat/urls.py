@@ -10,7 +10,7 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('session/', views.session, name='session'),
     path('trivia/<str:room_question>/', views.question, name='question'),
-    path('end/', views.end, name='end'),
+    path('end/<str:user_name>/', views.end, name='end'),
     path('defaultquestions/', views.default_questions, name='default_questions'),
     path('reset/', views.clear_games, name='clear_games'),
 ]
