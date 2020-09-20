@@ -10,7 +10,7 @@ import json
 
 def get_current_users():
     all_games = Games.objects.all()
-    current_users = []
+    current_users = {}
 
     for game in all_games:
         game_inst = json.loads(game.instance)
@@ -19,6 +19,6 @@ def get_current_users():
             user_data = game_inst[user]
 
             if (user_data['status'] != 'end'):
-                current_users.append(user_data['user'])
+                current_users[user_data['user']] = '1'
 
     return current_users
